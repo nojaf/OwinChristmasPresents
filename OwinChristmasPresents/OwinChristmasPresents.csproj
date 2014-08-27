@@ -109,6 +109,10 @@
     </Content>
     <None Include="Properties\PublishProfiles\kerstavond.pubxml" />
     <Content Include="scripts\vendor\angular\angular.min.js.map" />
+    <Content Include="scripts\script.js.bundle" />
+    <Content Include="scripts\script.min.js.map">
+      <DependentUpon>script.min.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -117,6 +121,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\grid.css" />
     <Content Include="Content\style.css">
       <DependentUpon>style.less</DependentUpon>
     </Content>
@@ -130,6 +135,12 @@
       <DependentUpon>variables.css</DependentUpon>
     </Content>
     <Content Include="public\index.html" />
+    <Content Include="scripts\script.js">
+      <DependentUpon>script.js.bundle</DependentUpon>
+    </Content>
+    <Content Include="scripts\script.min.js">
+      <DependentUpon>script.js</DependentUpon>
+    </Content>
     <Content Include="scripts\vendor\angular\angular-mocks.js" />
     <Content Include="scripts\vendor\angular\angular.js" />
     <Content Include="scripts\vendor\angular\angular.min.js" />

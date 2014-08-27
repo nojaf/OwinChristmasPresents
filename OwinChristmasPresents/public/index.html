@@ -4,7 +4,29 @@
     <title></title>
     <link href="../Content/style.css" rel="stylesheet" />
 </head>
-<body>
-    <h1>Rocks</h1>
+<body ng-app="christmas">
+    <header>
+        <div class="container">
+            <h1>Christmas presents</h1>
+            <p>An basic Owin App, the source is on <a href="#">github</a></p>
+        </div>
+    </header>
+    <div id="mainContainer" class="container" ng-controller="mainCtrl">
+        <div class="row">
+            <div class="col-s-3">
+                <form name="addPouleFrm" ng-submit="createPoule(pouleName)">
+                    <input type="text" value="" name="pouleName" placeholder="Enter the new poule name" ng-model="pouleName" />
+                    <input type="submit" value="Add" ng-disabled="!pouleName" />
+                </form>
+            </div>
+
+            <div id="poules" class="col-s-9">
+                <div class="poule" ng-repeat="poule in poules">
+                    {{poule}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>
