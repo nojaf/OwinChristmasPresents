@@ -108,11 +108,18 @@
       <DependentUpon>variables.css</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\kerstavond.pubxml" />
+    <Content Include="public\style.css">
+      <DependentUpon>style.css.bundle</DependentUpon>
+    </Content>
+    <Content Include="public\style.min.css">
+      <DependentUpon>style.css</DependentUpon>
+    </Content>
     <Content Include="scripts\vendor\angular\angular.min.js.map" />
-    <Content Include="scripts\script.js.bundle" />
-    <Content Include="scripts\script.min.js.map">
+    <Content Include="public\script.js.bundle" />
+    <Content Include="public\script.min.js.map">
       <DependentUpon>script.min.js</DependentUpon>
     </Content>
+    <Content Include="public\style.css.bundle" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -135,10 +142,10 @@
       <DependentUpon>variables.css</DependentUpon>
     </Content>
     <Content Include="public\index.html" />
-    <Content Include="scripts\script.js">
+    <Content Include="public\script.js">
       <DependentUpon>script.js.bundle</DependentUpon>
     </Content>
-    <Content Include="scripts\script.min.js">
+    <Content Include="public\script.min.js">
       <DependentUpon>script.js</DependentUpon>
     </Content>
     <Content Include="scripts\vendor\angular\angular-mocks.js" />
@@ -148,21 +155,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\PresentApiController.cs" />
-    <Compile Include="Models\Family.cs" />
     <Compile Include="Models\Person.cs" />
-    <Compile Include="Models\Poule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Models\Family.cs.d.ts">
-      <DependentUpon>Family.cs</DependentUpon>
-    </TypeScriptCompile>
     <TypeScriptCompile Include="Models\Person.cs.d.ts">
       <DependentUpon>Person.cs</DependentUpon>
-    </TypeScriptCompile>
-    <TypeScriptCompile Include="Models\Poule.cs.d.ts">
-      <DependentUpon>Poule.cs</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="scripts\app\mainCtrl.ts" />
     <TypeScriptCompile Include="scripts\app\presentService.ts" />

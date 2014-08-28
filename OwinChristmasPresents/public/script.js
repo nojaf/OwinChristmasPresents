@@ -237,15 +237,15 @@ var ChristmasPresents;
     var PresentService = (function () {
         function PresentService($http, $q) {
         }
-        PresentService.prototype.loadPoules = function () {
+        PresentService.prototype.loadPeople = function () {
             if (localStorage) {
-                var json = localStorage.getItem(PresentService.PouleLocalStorageKey);
+                var json = localStorage.getItem(PresentService.PeopleLocalStorageKey);
 
                 if (!json)
                     return [];
 
                 var poules = angular.fromJson(json);
-                console.log("Found poules in localStorage", poules);
+                console.log("Found people in localStorage", poules);
                 return poules;
             }
 
@@ -255,10 +255,10 @@ var ChristmasPresents;
         PresentService.prototype.savePoules = function (poules) {
             if (localStorage) {
                 var json = angular.toJson(poules);
-                localStorage.setItem(PresentService.PouleLocalStorageKey, json);
+                localStorage.setItem(PresentService.PeopleLocalStorageKey, json);
             }
         };
-        PresentService.PouleLocalStorageKey = "poules";
+        PresentService.PeopleLocalStorageKey = "people";
         PresentService.serviceId = "presentFactory";
         return PresentService;
     })();
@@ -278,48 +278,28 @@ var ChristmasPresents;
             var _this = this;
             this.$scope = $scope;
             this.presentService = presentService;
-            this.$scope.removePerson = function (index, poule) {
-                return _this.removePerson(index, poule);
+            this.$scope.removePerson = function (index) {
+                return _this.removePerson(index);
             };
-            this.$scope.createPoule = function (name) {
-                return _this.createPoule(name);
-            };
-            this.$scope.addPerson = function (person, poule) {
-                return _this.addPerson(person, poule);
-            };
-            this.$scope.removePoule = function (index) {
-                return _this.removePoule(index);
+            this.$scope.addPerson = function (name) {
+                return _this.addPerson(name);
             };
 
-            this.$scope.poules = presentService.loadPoules();
+            this.$scope.people = presentService.loadPeople();
         }
-        MainController.prototype.addPerson = function (person, poule) {
-            poule.people.push(person);
+        MainController.prototype.addPerson = function (name) {
+            this.$scope.people.push({ name: name });
             this.savePoules();
+            this.$scope.personName = null;
         };
 
-        MainController.prototype.removePerson = function (index, poule) {
-            poule.people.splice(index, 1);
-            this.savePoules();
-        };
-
-        MainController.prototype.createPoule = function (name) {
-            console.log("creating " + name);
-            var poule = {
-                name: name,
-                people: []
-            };
-            this.$scope.poules.push(poule);
-            this.savePoules();
-        };
-
-        MainController.prototype.removePoule = function (index) {
-            this.$scope.poules.splice(index, 1);
+        MainController.prototype.removePerson = function (index) {
+            this.$scope.people.splice(index, 1);
             this.savePoules();
         };
 
         MainController.prototype.savePoules = function () {
-            this.presentService.savePoules(this.$scope.poules);
+            this.presentService.savePoules(this.$scope.people);
         };
         MainController.serviceId = "mainCtrl";
         return MainController;

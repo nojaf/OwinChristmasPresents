@@ -1,55 +1,113 @@
 ﻿@import (reference) "variables.less";
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
-@import url('grid.css');
 
-
-*{
-        margin:0;
-    padding:0;
+* {
+    margin: 0;
+    padding: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:"Open Sans";
+body {
+    font-family: "Open Sans";
+    background-color: @background;
 }
 
-header{
-    background-color:@nephritis;
-    color:@white;
-    min-height:170px;
-    display:flex;
+header {
+    background-color: @nephritis;
+    color: @white;
+    min-height: 170px;
+    display: flex;
 
-    h1{
-        font-weight:300;
-        font-size:3em;
-        float:left;
+    h1 {
+        font-weight: 300;
+        font-size: 3em;
+        float: left;
+        margin-top: 20px;
     }
 
-    p{
-        float:right;
-        margin-top:75px;
-    }
-}
-
-
-
-a{
-    &:link{
-        color:@white;
-    }
-
-    &:hover{
-        color:@alizarin;
-    }
-
-    &:visited{
-        color:@white;
+    p {
+        float: right;
+        margin-top: 75px;
     }
 }
 
-form{
-    border-radius:10px;
-    background-color:@pomegranate;
-    border:1px solid @alizarin;
-    padding:20px;
+
+
+a {
+    &:link {
+        color: @white;
+    }
+
+    &:hover {
+        color: fade(@white, 25%);
+    }
+
+    &:visited {
+        color: @white;
+    }
+}
+
+#people {
+    background-color: @emerald;
     margin-top:10px;
+
+
+    form {
+        background-color: @emerald;
+
+        input[type=text]{
+            padding:5px;
+            border:1px solid @nephritis;
+        }
+
+
+
+        input{
+            height:30px;
+        }
+    }
+
+    .person{
+        color:@white;
+        display:flex;
+        height:50px;
+        border-bottom:1px solid darken(@emerald,3%);
+
+        label{
+            margin:auto;
+        }
+
+        button{
+            height:20px;
+            width:20px;
+            border-radius:10px;
+            margin:auto 10px;
+        }
+    }
 }
+
+#btnGen{
+    height:40px;
+}
+
+
+        input[type=submit], button{
+            background-color:@nephritis;
+            color:@white;
+            border:none;
+
+            &:active{
+                background-color:darken(@nephritis, 25%);
+            }
+
+            &:hover{
+                cursor:pointer;
+                background-color:darken(@nephritis, 10%);
+            }
+
+            &:disabled{
+                background-color:dimgray;
+            }
+        }

@@ -1,32 +1,41 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title></title>
-    <link href="../Content/style.css" rel="stylesheet" />
+    <title>Christmas presents Owin</title>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
 </head>
 <body ng-app="christmas">
     <header>
         <div class="container">
             <h1>Christmas presents</h1>
             <p>An basic Owin App, the source is on <a href="#">github</a></p>
+            <ul>
+                <li>
+                    <a href="#en">en</a>
+                    <a href="#nl">nl</a>
+                </li>
+            </ul>
         </div>
     </header>
     <div id="mainContainer" class="container" ng-controller="mainCtrl">
-        <div class="row">
-            <div class="col-s-3">
-                <form name="addPouleFrm" ng-submit="createPoule(pouleName)">
-                    <input type="text" value="" name="pouleName" placeholder="Enter the new poule name" ng-model="pouleName" />
-                    <input type="submit" value="Add" ng-disabled="!pouleName" />
+        <div class="row no-gutter">
+            <div class="col-s-3" id="people">
+                <form name="addPersonFrm" class="row no-gutter" ng-submit="addPerson(personName)">
+                    <input type="text" class="col-xs-8" value="" name="personName" 
+                           required placeholder="Enter new person name" ng-model="personName" />
+                    <input type="submit" class="col-xs-4" value="Add" ng-disabled="addPersonFrm.$errors" />
                 </form>
-            </div>
-
-            <div id="poules" class="col-s-9">
-                <div class="poule" ng-repeat="poule in poules">
-                    {{poule}}
+                <div class="person" ng-repeat="person in people">
+                    <label>{{person.name}}</label><button ng-click="removePerson($index)"><i class="fa fa-trash"></i></button>  
                 </div>
+                <button id="btnGen" class="col-s-12">Generate</button>
+            </div>
+            <div id="graphs" class="col-s-9">
+
             </div>
         </div>
     </div>
-    <script src="../scripts/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

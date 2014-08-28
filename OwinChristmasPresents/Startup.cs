@@ -4,6 +4,7 @@ using Microsoft.Owin;
 using Owin;
 using Microsoft.Owin.StaticFiles;
 using Microsoft.Owin.FileSystems;
+using Microsoft.Owin.Extensions;
 using System.Web.Http;
 
 [assembly: OwinStartup(typeof(OwinChristmasPresents.Startup))]
@@ -24,8 +25,10 @@ namespace OwinChristmasPresents
             app.UseFileServer(new FileServerOptions()
             {
                 RequestPath = PathString.Empty,
-                FileSystem = new PhysicalFileSystem(@".\public"),
+                FileSystem = new PhysicalFileSystem(@".\\public"),
             });
+
+            app.UseStageMarker(PipelineStage.MapHandler);
 
             //Web Api
             HttpConfiguration config = new HttpConfiguration();

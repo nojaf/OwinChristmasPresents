@@ -1,11 +1,14 @@
 ﻿@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
-@import url('grid.css');
 * {
   margin: 0;
   padding: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
 body {
   font-family: "Open Sans";
+  background-color: #f1f1f1;
 }
 header {
   background-color: #27ae60;
@@ -17,6 +20,7 @@ header h1 {
   font-weight: 300;
   font-size: 3em;
   float: left;
+  margin-top: 20px;
 }
 header p {
   float: right;
@@ -26,16 +30,60 @@ a:link {
   color: #faffff;
 }
 a:hover {
-  color: #e74c3c;
+  color: rgba(250, 255, 255, 0.25);
 }
 a:visited {
   color: #faffff;
 }
-form {
-  border-radius: 10px;
-  background-color: #c0392b;
-  border: 1px solid #e74c3c;
-  padding: 20px;
+#people {
+  background-color: #2ecc71;
   margin-top: 10px;
+}
+#people form {
+  background-color: #2ecc71;
+}
+#people form input[type=text] {
+  padding: 5px;
+  border: 1px solid #27ae60;
+}
+#people form input {
+  height: 30px;
+}
+#people .person {
+  color: #faffff;
+  display: flex;
+  height: 50px;
+  border-bottom: 1px solid #2bc06a;
+}
+#people .person label {
+  margin: auto;
+}
+#people .person button {
+  height: 20px;
+  width: 20px;
+  border-radius: 10px;
+  margin: auto 10px;
+}
+#btnGen {
+  height: 40px;
+}
+input[type=submit],
+button {
+  background-color: #27ae60;
+  color: #faffff;
+  border: none;
+}
+input[type=submit]:active,
+button:active {
+  background-color: #104627;
+}
+input[type=submit]:hover,
+button:hover {
+  cursor: pointer;
+  background-color: #1e8449;
+}
+input[type=submit]:disabled,
+button:disabled {
+  background-color: dimgray;
 }
 /*# sourceMappingURL=style.css.map */
