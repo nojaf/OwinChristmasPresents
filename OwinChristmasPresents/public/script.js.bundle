@@ -11,6 +11,7 @@
   <!--The order of the <file> elements determines the order of the files in the bundle.-->
   <files>
     <file>/scripts/vendor/angular/angular.min.js</file>
+	  <file>/scripts/vendor/angular/angular-translate.min.js</file>
     <file>/scripts/app/app.js</file>
 	  <file>/scripts/app/presentService.js</file>
     <file>/scripts/app/mainCtrl.js</file>

@@ -44,5 +44,26 @@ namespace OwinChristmasPresents.Controllers
             Random r = new Random();
             return target.OrderBy(x => (r.Next())).ToArray();
         }  
+        [Route("translate")]
+        [HttpGet]
+        public HttpResponseMessage Translate(string lang)
+        {
+            Dictionary<string, string> translations = (lang == "nl" ? GetDutch() : GetEnglish());
+            return Request.CreateResponse<Dictionary<string, string>>(translations);
+        }
+
+        private Dictionary<string, string> GetDutch()
+        {
+            Dictionary<string, string> dutch = new Dictionary<string, string>();
+            dutch.Add("mainTitle", "Kerstavond cadeaus");
+            dutch.Add("subTitle", "Een demo applicatie gemaakt met Owin, de source is op ");
+            dutch.Add("personPlaceHolder", "Voeg een nieuwe persoon toe");
+            return dutch;
+        }
+
+        private Dictionary<string, string> GetEnglish()
+        {
+            return null;
+        }
     }
 }

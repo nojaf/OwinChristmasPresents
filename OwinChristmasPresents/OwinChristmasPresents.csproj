@@ -114,6 +114,8 @@
     <Content Include="public\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
+    <Content Include="scripts\vendor\angular\angular-translate.js" />
+    <Content Include="scripts\vendor\angular\angular-translate.min.js" />
     <Content Include="scripts\vendor\angular\angular.min.js.map" />
     <Content Include="public\script.js.bundle" />
     <Content Include="public\script.min.js.map">
@@ -165,6 +167,7 @@
     </TypeScriptCompile>
     <TypeScriptCompile Include="scripts\app\mainCtrl.ts" />
     <TypeScriptCompile Include="scripts\app\presentService.ts" />
+    <TypeScriptCompile Include="scripts\typings\angular-translate\angular-translate.d.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-cookies.d.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-mocks.d.ts" />
