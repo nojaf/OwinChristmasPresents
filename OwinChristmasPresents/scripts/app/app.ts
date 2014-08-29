@@ -7,13 +7,13 @@ module ChristmasPresents {
         return angular.module("christmas");
     }
 
-    getAngularModule().run(["$http", "$translateProvider","$location",translate]);
+    getAngularModule().run(["$http", "$translate","$location",translate]);
 
     function translate($http: ng.IHttpService, $translateProvider: ng.translate.ITranslateService, $location: ng.ILocationService) {
         var language = $location.path().split("#")[1] || "en";
 
-        $http.get("api/present/translate?lang=" + language).then(data => {
+        //$http.get("api/present/translate?lang=" + language).then(data => {
 
-        });
+        //});
     }
 } 

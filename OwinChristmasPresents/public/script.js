@@ -238,13 +238,12 @@ var ChristmasPresents;
     }
     ChristmasPresents.getAngularModule = getAngularModule;
 
-    getAngularModule().run(["$http", "$translateProvider", "$location", translate]);
+    getAngularModule().run(["$http", "$translate", "$location", translate]);
 
     function translate($http, $translateProvider, $location) {
         var language = $location.path().split("#")[1] || "en";
-
-        $http.get("api/present/translate?lang=" + language).then(function (data) {
-        });
+        //$http.get("api/present/translate?lang=" + language).then(data => {
+        //});
     }
 })(ChristmasPresents || (ChristmasPresents = {}));
 //# sourceMappingURL=app.js.map
