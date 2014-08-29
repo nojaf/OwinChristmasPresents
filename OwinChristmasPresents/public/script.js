@@ -236,6 +236,8 @@ var ChristmasPresents;
 (function (ChristmasPresents) {
     var PresentService = (function () {
         function PresentService($http, $q) {
+            this.$http = $http;
+            this.$q = $q;
         }
         PresentService.prototype.loadPeople = function () {
             if (localStorage) {
@@ -252,11 +254,29 @@ var ChristmasPresents;
             return [];
         };
 
-        PresentService.prototype.savePoules = function (poules) {
+        PresentService.prototype.savePeople = function (people) {
             if (localStorage) {
-                var json = angular.toJson(poules);
+                var json = angular.toJson(people);
                 localStorage.setItem(PresentService.PeopleLocalStorageKey, json);
             }
+        };
+
+        PresentService.prototype.randomizePeople = function (people) {
+            var request = {
+                method: "POST",
+                data: people,
+                url: "/api/present/randomize"
+            };
+
+            var deferred = this.$q.defer();
+
+            this.$http(request).success(function (data) {
+                return deferred.resolve(data);
+            }).error(function (err) {
+                return deferred.reject(err);
+            });
+
+            return deferred.promise;
         };
         PresentService.PeopleLocalStorageKey = "people";
         PresentService.serviceId = "presentFactory";
@@ -264,7 +284,8 @@ var ChristmasPresents;
     })();
     ChristmasPresents.PresentService = PresentService;
 
-    ChristmasPresents.getAngularModule().factory(PresentService.serviceId, ["$http", "$q", function ($http, $q) {
+    ChristmasPresents.getAngularModule().factory(PresentService.serviceId, [
+        "$http", "$q", function ($http, $q) {
             return new PresentService($http, $q);
         }]);
 })(ChristmasPresents || (ChristmasPresents = {}));
@@ -284,29 +305,46 @@ var ChristmasPresents;
             this.$scope.addPerson = function (name) {
                 return _this.addPerson(name);
             };
-
+            this.$scope.submit = function () {
+                return _this.submit();
+            };
             this.$scope.people = presentService.loadPeople();
         }
         MainController.prototype.addPerson = function (name) {
-            this.$scope.people.push({ name: name });
+            this.$scope.people.push({ Name: name });
             this.savePoules();
             this.$scope.personName = null;
+            this.$scope.results = null;
         };
 
         MainController.prototype.removePerson = function (index) {
             this.$scope.people.splice(index, 1);
+            this.$scope.results = null;
             this.savePoules();
         };
 
         MainController.prototype.savePoules = function () {
-            this.presentService.savePoules(this.$scope.people);
+            this.presentService.savePeople(this.$scope.people);
+        };
+
+        MainController.prototype.submit = function () {
+            var _this = this;
+            this.$scope.error = false;
+
+            this.presentService.randomizePeople(this.$scope.people).then(function (data) {
+                console.log("result", data);
+                _this.$scope.results = data;
+            }).catch(function (err) {
+                _this.$scope.error = true;
+            });
         };
         MainController.serviceId = "mainCtrl";
         return MainController;
     })();
     ChristmasPresents.MainController = MainController;
 
-    ChristmasPresents.getAngularModule().controller(MainController.serviceId, ["$scope", ChristmasPresents.PresentService.serviceId, function ($scope, presentService) {
+    ChristmasPresents.getAngularModule().controller(MainController.serviceId, [
+        "$scope", ChristmasPresents.PresentService.serviceId, function ($scope, presentService) {
             return new MainController($scope, presentService);
         }]);
 })(ChristmasPresents || (ChristmasPresents = {}));

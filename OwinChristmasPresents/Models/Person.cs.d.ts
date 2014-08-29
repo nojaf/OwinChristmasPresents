@@ -1,5 +1,6 @@
 ﻿declare module server {
 	interface Person {
-		name: string;
+		Name: string;
+		BuysFor?: string;
 	}
 }

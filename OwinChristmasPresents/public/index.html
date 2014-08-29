@@ -27,12 +27,17 @@
                     <input type="submit" class="col-xs-4" value="Add" ng-disabled="addPersonFrm.$errors" />
                 </form>
                 <div class="person" ng-repeat="person in people">
-                    <label>{{person.name}}</label><button ng-click="removePerson($index)"><i class="fa fa-trash"></i></button>  
+                    <label>{{person.Name}}</label><button ng-click="removePerson($index)"><i class="fa fa-trash"></i></button>  
                 </div>
-                <button id="btnGen" class="col-s-12">Generate</button>
+                <button ng-click="submit()" ng-disabled="people.length < 2" id="btnGen" class="col-s-12">Generate</button>
             </div>
-            <div id="graphs" class="col-s-9">
-
+            <div id="graphs" class="col-s-8 offset-s-1" ng-show="results">
+                <h2>Results</h2>
+                <div ng-repeat="result in results" class="row no-gutter">
+                    <label class="col-s-5">{{result.Name}}</label>
+                    <span class="col-s-2">buys for</span>
+                    <label class="col-s-5">{{result.BuysFor}}</label>
+                </div>
             </div>
         </div>
     </div>

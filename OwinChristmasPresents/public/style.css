@@ -35,9 +35,11 @@ a:hover {
 a:visited {
   color: #faffff;
 }
+#mainContainer {
+  padding-top: 10px;
+}
 #people {
   background-color: #2ecc71;
-  margin-top: 10px;
 }
 #people form {
   background-color: #2ecc71;
@@ -66,6 +68,26 @@ a:visited {
 }
 #btnGen {
   height: 40px;
+}
+#graphs {
+  background-color: #2ecc71;
+}
+#graphs h2 {
+  height: 30px;
+  background-color: #27ae60;
+  color: #faffff;
+  padding: 0 5px;
+  font-size: 22px;
+}
+#graphs div {
+  color: #faffff;
+  display: flex;
+  height: 50px;
+  border-bottom: 1px solid #2bc06a;
+}
+#graphs div > * {
+  margin: auto;
+  padding-left: 10px;
 }
 input[type=submit],
 button {
