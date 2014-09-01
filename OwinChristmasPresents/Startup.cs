@@ -20,13 +20,22 @@ namespace OwinChristmasPresents
             app.UseErrorPage();
 #endif
 
-            // Remap '/' to '.\public\'.
-            // Turns on static files and public files.
-            app.UseFileServer(new FileServerOptions()
+            FileServerOptions fileServerOptions = new FileServerOptions()
             {
                 RequestPath = PathString.Empty,
                 FileSystem = new PhysicalFileSystem(@".\\public"),
-            });
+            };
+
+            //In order to serve json files
+            fileServerOptions.StaticFileOptions.ServeUnknownFileTypes = true;
+            fileServerOptions.StaticFileOptions.DefaultContentType = "text";
+            
+
+            // Remap '/' to '.\public\'.
+            // Turns on static files and public files.
+            app.UseFileServer(fileServerOptions);
+
+            
 
             app.UseStageMarker(PipelineStage.MapHandler);
 

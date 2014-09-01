@@ -1,41 +1,41 @@
 ﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="christmas" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Christmas presents Owin</title>
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="style.css" rel="stylesheet" />
 </head>
-<body ng-app="christmas">
+<body ng-controller="mainCtrl">
     <header>
         <div class="container">
-            <h1>Christmas presents</h1>
-            <p>An basic Owin App, the source is on <a href="https://github.com/nojaf/OwinChristmasPresents" target="_blank">github</a></p>
+            <h1 translate="mainTitle"></h1>
+            <p><span translate="subTitle"></span> <a href="https://github.com/nojaf/OwinChristmasPresents" target="_blank">github</a></p>
             <ul>
                 <li>
-                    <a href="#en">en</a>
-                    <a href="#nl">nl</a>
+                    <a href="#en" ng-click="changeLanguage('en')">en</a>
+                    <a href="#nl" ng-click="changeLanguage('nl')">nl</a>
                 </li>
             </ul>
         </div>
     </header>
-    <div id="mainContainer" class="container" ng-controller="mainCtrl">
+    <div id="mainContainer" class="container">
         <div class="row no-gutter">
             <div class="col-s-3" id="people">
                 <form name="addPersonFrm" class="row no-gutter" ng-submit="addPerson(personName)">
-                    <input type="text" class="col-xs-8" value="" name="personName" 
-                           required placeholder="Enter new person name" ng-model="personName" />
-                    <input type="submit" class="col-xs-4" value="Add" ng-disabled="addPersonFrm.$errors" />
+                    <input type="text" class="col-xs-8" value="" name="personName"
+                           required ng-model="personName" />
+                    <button translate="addBtn" class="col-xs-4" ng-disabled="addPersonFrm.$errors"></button>
                 </form>
                 <div class="person" ng-repeat="person in people">
-                    <label>{{person.Name}}</label><button ng-click="removePerson($index)"><i class="fa fa-trash"></i></button>  
+                    <label>{{person.Name}}</label><button ng-click="removePerson($index)"><i class="fa fa-trash"></i></button>
                 </div>
-                <button ng-click="submit()" ng-disabled="people.length < 2" id="btnGen" class="col-s-12">Generate</button>
+                <button translate="generateBtn" ng-click="submit()" ng-disabled="people.length < 2" id="btnGen" class="col-s-12"></button>
             </div>
             <div id="graphs" class="col-s-8 offset-s-1" ng-show="results">
-                <h2>Results</h2>
+                <h2 translate="results"></h2>
                 <div ng-repeat="result in results" class="row no-gutter">
                     <label class="col-s-5">{{result.Name}}</label>
-                    <span class="col-s-2">buys for</span>
+                    <span class="col-s-2" translate="buysFor"></span>
                     <label class="col-s-5">{{result.BuysFor}}</label>
                 </div>
             </div>

@@ -114,6 +114,8 @@
     <Content Include="public\style.min.css">
       <DependentUpon>style.css</DependentUpon>
     </Content>
+    <Content Include="scripts\vendor\angular\angular-translate-loader-url.js" />
+    <Content Include="scripts\vendor\angular\angular-translate-loader-url.min.js" />
     <Content Include="scripts\vendor\angular\angular-translate.js" />
     <Content Include="scripts\vendor\angular\angular-translate.min.js" />
     <Content Include="scripts\vendor\angular\angular.min.js.map" />
@@ -122,6 +124,14 @@
       <DependentUpon>script.min.js</DependentUpon>
     </Content>
     <Content Include="public\style.css.bundle" />
+    <Content Include="scripts\vendor\angular\angular-translate.min.js.map">
+      <DependentUpon>angular-translate.min.js</DependentUpon>
+    </Content>
+    <Content Include="public\translations\en.json" />
+    <Content Include="public\translations\nl.json" />
+    <Content Include="scripts\vendor\angular\angular-translate-loader-url.min.js.map">
+      <DependentUpon>angular-translate-loader-url.min.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -166,6 +176,7 @@
       <DependentUpon>Person.cs</DependentUpon>
     </TypeScriptCompile>
     <TypeScriptCompile Include="scripts\app\mainCtrl.ts" />
+    <TypeScriptCompile Include="scripts\app\models.ts" />
     <TypeScriptCompile Include="scripts\app\presentService.ts" />
     <TypeScriptCompile Include="scripts\typings\angular-translate\angular-translate.d.ts" />
     <TypeScriptCompile Include="scripts\typings\angularjs\angular-animate.d.ts" />

@@ -26,6 +26,28 @@ header p {
   float: right;
   margin-top: 75px;
 }
+header ul {
+  float: left;
+  clear: both;
+  margin-top: 15px;
+}
+header ul li {
+  float: left;
+  list-style-type: none;
+}
+header ul li a {
+  text-decoration: none;
+  color: #2ecc71;
+  margin: 5px;
+  padding: 7px;
+}
+header ul li a:hover {
+  color: #27ae60;
+  background-color: #faffff;
+}
+header ul li a:visited {
+  color: #2ecc71;
+}
 a:link {
   color: #faffff;
 }
@@ -48,7 +70,8 @@ a:visited {
   padding: 5px;
   border: 1px solid #27ae60;
 }
-#people form input {
+#people form input,
+#people form button {
   height: 30px;
 }
 #people .person {

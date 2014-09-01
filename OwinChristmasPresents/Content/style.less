@@ -31,6 +31,32 @@ header {
         float: right;
         margin-top: 75px;
     }
+
+    ul{
+        float:left;
+        clear:both;
+        margin-top:15px;
+        li{
+            float:left;
+            list-style-type:none;
+            a{
+                text-decoration:none;
+                
+                color:@emerald;
+                margin:5px;
+                padding:7px;
+
+                &:hover{
+                    color:@nephritis;
+                    background-color:@white;
+                }
+
+                &:visited{
+                    color:@emerald;
+                }
+            }
+        }
+    }
 }
 
 
@@ -67,7 +93,7 @@ a {
 
 
 
-        input {
+        input, button {
             height: 30px;
         }
     }
